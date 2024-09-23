@@ -112,7 +112,7 @@ Retrieved value: myvalue
 "attributes": {
     "code.function": "__construct",
     "code.namespace": "Predis\\Client",
-    "code.filepath": "\/Users\/lciukaj\/developer\/opentelemetry\/otel-redis-testing\/php-redis\/vendor\/predis\/predis\/src\/Client.php",
+    "code.filepath": "\/Users\/luke6Lh43\/developer\/opentelemetry\/otel-redis-testing\/php-redis\/vendor\/predis\/predis\/src\/Client.php",
     "code.lineno": 71,
     "server.address": "127.0.0.1",
     "network.transport": "tcp",
