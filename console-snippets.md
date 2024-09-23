@@ -1,5 +1,6 @@
-****** Dotnet ******
+### DOTNET
 
+```csharp
 Retrieved value: sampleValue
 Activity.TraceId:            5e54c59520df46ad76daf2a83dea4b7f
 Activity.SpanId:             3c2faed9c113d090
@@ -17,9 +18,10 @@ Activity.Tags:
     net.peer.name: localhost
     net.peer.port: 6379
     db.redis.database_index: 0
+```    
+### GO
 
-****** GO ******
-
+```go
 "Attributes": [
         {
                 "Key": "server.address",
@@ -77,14 +79,20 @@ Activity.Tags:
                         "Value": "get id1234"
                 }
         }
-],
+]
+```
 
-****** JAVA ******
+## JAVA
+
+```java
 
 21 78b6d9336e1ee84e CLIENT [tracer: io.opentelemetry.jedis-4.0:2.8.0-alpha] AttributesMap{data={db.operation=GET, network.peer.port=6379, thread.name=main, thread.id=1, network.type=ipv6, network.peer.address=0:0:0:0:0:0:0:1, db.statement=GET mykey, db.system=redis}, capacity=128, totalAddedValues=8}
 Retrieved value: myvalue
+```
 
-****** NODEJS ******
+## NODEJS
+
+```node
 
   instrumentationScope: {
     name: '@opentelemetry/instrumentation-redis-4',
@@ -105,9 +113,11 @@ Retrieved value: myvalue
     'net.peer.port': 6379,
     'db.connection_string': 'redis://localhost:6379'
   }
+```
 
+## PHP
 
-****** PHP ******
+```php
 
 "attributes": {
     "code.function": "__construct",
@@ -119,10 +129,11 @@ Retrieved value: myvalue
     "server.port": 6379,
     "db.system": "redis"
 }
+```
 
+## PYTHON
 
-****** PYTHON ******
-
+```python
 {
     "name": "GET",
     "context": {
@@ -159,3 +170,4 @@ Retrieved value: myvalue
         "schema_url": ""
     }
 }
+```
