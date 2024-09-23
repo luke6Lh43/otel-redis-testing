@@ -1,0 +1,6 @@
+export OTEL_PHP_AUTOLOAD_ENABLED=true
+export OTEL_SERVICE_NAME=php-redis-testing
+export OTEL_TRACES_EXPORTER=console
+export OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
+export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
+export OTEL_PROPAGATORS=baggage,tracecontext

@@ -1,0 +1,19 @@
+{
+    "require": {
+        "slim/slim": "^4.0",
+        "slim/psr7": "^1.7",
+        "guzzlehttp/guzzle": "^7.9",
+        "predis/predis": "^2.2",
+        "open-telemetry/sdk": "^1.0",
+        "open-telemetry/opentelemetry-auto-slim": "^1.0",
+        "open-telemetry/opentelemetry-auto-psr18": "^1.0",
+        "mismatch/opentelemetry-auto-redis": "^0.3.0",
+        "php-di/php-di": "^7.0",
+        "open-telemetry/exporter-otlp": "^1.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}

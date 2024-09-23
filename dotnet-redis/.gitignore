@@ -1,0 +1,37 @@
+# Build Folders (you can edit these to match your build output)
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+*.log
+*.tlog
+*.ide
+*.cache
+*.pdb
+*.ilk
+*.obj
+*.exe
+*.dll
+*.nupkg
+*.snupkg
+*.symbols.nupkg
+*.psess
+*.vspx
+*.vsp
+*.vspf
+*.vspscc
+*.vssscc
+*.vspscc
+*.vssscc
+*.vsmdi
+*.testsettings
+*.vsdconfig
+*.vsdconfig.vsdconfig
+*.vs
