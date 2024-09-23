@@ -1,6 +1,0 @@
-export OTEL_SERVICE_NAME=dotnet-redis-testing
-export OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
-export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
-export OTEL_TRACES_EXPORTER=console
-export OTEL_PROPAGATORS=baggage,tracecontext
-export OTEL_DOTNET_AUTO_TRACES_CONSOLE_EXPORTER_ENABLED=true
