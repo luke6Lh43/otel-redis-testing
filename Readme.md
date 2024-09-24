@@ -32,12 +32,13 @@ docker run --name redis -p 6379:6379 -d redis
 
 ```
 cd dotnet-redis
-dotnet restore
 dotnet build
 
 OpenTelemetry Zero-code Instrumentation:
 
 curl -L -O https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh
+chmod +x $HOME/.otel-dotnet-auto/instrument.sh
+. $HOME/.otel-dotnet-auto/instrument.sh
 
 export OTEL_SERVICE_NAME=dotnet-redis-testing
 export OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
@@ -67,7 +68,10 @@ go run main.go
 ```
 cd java-redis
 mvn clean install
-java -javaagent:./opentelemetry-javaagent.jar -Dotel.exporter.otlp.endpoint=http://localhost:4317 -Dotel.exporter.otlp.protocol=grpc  -Dotel.metrics.exporter=none -Dotel.resource.attributes=service.name=java-redis-testing -Dotel.traces.exporter=otlp,logging -jar target/java-redis-1.0-SNAPSHOT.jar
+
+wget https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/download/v2.8.0/opentelemetry-javaagent.jar
+
+java -javaagent:./opentelemetry-javaagent.jar -Dotel.exporter.otlp.endpoint=http://localhost:4318 -Dotel.exporter.otlp.protocol=http/protobuf  -Dotel.metrics.exporter=none -Dotel.logs.exporter=none -Dotel.resource.attributes=service.name=java-redis-testing -Dotel.traces.exporter=otlp,console -jar target/java-redis-1.0-SNAPSHOT.jar
 ```
 
 ### Node.js
@@ -76,7 +80,7 @@ java -javaagent:./opentelemetry-javaagent.jar -Dotel.exporter.otlp.endpoint=http
 ```
 cd nodejs-redis
 npm install
-node --no-deprecation -r ./tracing.js app.js
+node -r ./tracing.js app.js
 
 curl http://localhost:3000
 ```
@@ -86,18 +90,28 @@ curl http://localhost:3000
 
 ```
 cd php-redis
+
+#install opentelemetry extension
+pecl install opentelemetry
+
+#please double-check what is extension directory and update php.ini file accordingly
+php -i | grep extension_dir
+
 composer install
 
 export OTEL_PHP_AUTOLOAD_ENABLED=true
 export OTEL_SERVICE_NAME=php-redis-testing
-export OTEL_TRACES_EXPORTER=console,otlp
+
+#For some reason OTEL Traces Exporter for PHP only support one exporter, so env variable must be either "console" or "otlp"
+export OTEL_TRACES_EXPORTER=console
+
 export OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
 export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
 export OTEL_PROPAGATORS=baggage,tracecontext
 
 php -S localhost:8080 -t .
 
-curl http://localhost:8080
+curl http://localhost:8080/data
 ```
 
 ### Python
@@ -108,13 +122,7 @@ cd python-redis
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-
-export OTEL_PHP_AUTOLOAD_ENABLED=true
-export OTEL_SERVICE_NAME=php-redis-testing
-export OTEL_TRACES_EXPORTER=console,otlp
-export OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
-export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
-export OTEL_PROPAGATORS=baggage,tracecontext
+opentelemetry-bootstrap -a install
 
 opentelemetry-instrument --traces_exporter console,otlp --exporter_otlp_endpoint http://0.0.0.0:4317 --service_name python-redis-testing python app.py
 ```
