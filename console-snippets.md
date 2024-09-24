@@ -99,20 +99,25 @@ Retrieved value: myvalue
     version: '0.42.0',
     schemaUrl: undefined
   },
-  traceId: '3ec670d8e42ad8725221b7117ce27f95',
-  parentId: 'b1368f13e3955563',
+  traceId: '2ae19e231fa0e53bf5c4f381960a08f8',
+  parentId: '93af18f4a8887053',
   traceState: undefined,
-  name: 'redis-connect',
-  id: '2c8596bbe2182c09',
+  name: 'redis-GET',
+  id: '9593cfff9135160d',
   kind: 2,
-  timestamp: 1727111685129000,
-  duration: 15615.535,
+  timestamp: 1727193579009000,
+  duration: 1111.802,
   attributes: {
     'db.system': 'redis',
     'net.peer.name': 'localhost',
     'net.peer.port': 6379,
-    'db.connection_string': 'redis://localhost:6379'
-  }
+    'db.connection_string': 'redis://localhost:6379',
+    'db.statement': 'GET myKey'
+  },
+  status: { code: 0 },
+  events: [],
+  links: []
+}
 ```
 
 ## PHP
