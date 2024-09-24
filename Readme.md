@@ -94,8 +94,9 @@ cd php-redis
 #install opentelemetry extension
 pecl install opentelemetry
 
-#please double-check what is extension directory and update php.ini file accordingly
+#please double-check what is extension directory and update php.ini file if needed
 php -i | grep extension_dir
+cat php.ini | grep opentelemetry
 
 composer install
 
